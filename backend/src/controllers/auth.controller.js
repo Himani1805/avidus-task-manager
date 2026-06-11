@@ -13,17 +13,19 @@ const generateToken = (id) => {
 // Register a new user
 const registerUser = async (req, res) => {
   const { name, email, password } = req.body;
-
+  //  console.log("0 - Request Received");
   try {
     // Check if user already exists
     const userExists = await User.findOne({ email });
     if (userExists) {
       return res.status(400).json({ message: 'User already exists' });
     }
+    // console.log("1 - User doesn't exist");
 
     // Create new user (password hashing is handled in model)
     const user = await User.create({ name, email, password });
 
+    //  console.log("2")
     res.status(201).json({
       _id: user._id,
       name: user.name,
@@ -33,6 +35,7 @@ const registerUser = async (req, res) => {
       token: generateToken(user._id),
     });
   } catch (error) {
+    console.error("CRITICAL ERROR IN REGISTER:", error);
     res.status(500).json({ message: error.message });
   }
 };

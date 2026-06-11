@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 import User from '../models/user.model.js';
 import { JWT_SECRET } from '../config/config.js'; 
 
-// Middleware to protect routes from unauthorized access
+// Protect routes middleware
 const protect = async (req, res, next) => {
   let token;
 
@@ -48,7 +48,6 @@ const admin = (req, res, next) => {
   if (req.user && req.user.role === 'Admin') {
     next();
   } else {
-    // Return a forbidden error if the user role is not Admin
     res.status(403).json({ message: 'Not authorized as an admin' });
   }
 };
