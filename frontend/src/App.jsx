@@ -19,7 +19,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
 
-          {/* Protected Routes Wrapper (Using the high-end Layout directly) */}
+          {/* Protected Main Workspace Shell */}
           <Route
             element={
               <ProtectedRoute>
@@ -30,7 +30,7 @@ function App() {
             {/* User Dashboard / My Tasks */}
             <Route path="/" element={<TaskDashboard />} />
 
-            {/* Admin Only Exclusive Routes */}
+            {/*Fully Protected Admin Only Exclusive Routes */}
             <Route
               path="/admin/logs"
               element={
@@ -47,8 +47,22 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            <Route path="admin/users" element={<UserManagement />} />
-          <Route path="admin/tasks" element={<TaskMonitoring />} />
+            <Route
+              path="/admin/users"
+              element={
+                <ProtectedRoute adminOnly={true}>
+                  <UserManagement />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/tasks"
+              element={
+                <ProtectedRoute adminOnly={true}>
+                  <TaskMonitoring />
+                </ProtectedRoute>
+              }
+            />
           </Route>
         </Routes>
       </BrowserRouter>

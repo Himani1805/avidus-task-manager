@@ -34,7 +34,7 @@ const Layout = () => {
         // Locked viewport with soft neutral tint bg-[#F8FAFC]
         <div className="h-screen w-screen flex flex-col overflow-hidden bg-[#F8FAFC] text-slate-900 font-sans antialiased">
 
-            {/* 1. PREMIUM HIGH-CONTRAST HEADER NAVBAR */}
+            {/* 1. HEADER NAVBAR */}
             <header className="h-16 flex-shrink-0 bg-white border-b-2 border-slate-100 flex items-center justify-between px-8 shadow-[0_1px_3px_rgba(0,0,0,0.01)] z-50">
 
                 {/* Left Wing: Logo container perfectly inline */}
@@ -49,7 +49,7 @@ const Layout = () => {
                         </svg>
                     </button>
 
-                    {/* Charcoal Slate Logo - Matched to match bold typography theme */}
+                    {/* Charcoal Slate Logo*/}
                     <Link to="/" className="text-xl font-black tracking-tight text-[#0E1F2F] flex items-center select-none">
                         TaskFlow<span className="text-[#86A8CF]">.</span>
                     </Link>
@@ -58,21 +58,21 @@ const Layout = () => {
                 {/* Right Wing: High-End Profile Widget & Logout perfectly centered */}
                 <div className="flex items-center space-x-6 h-full">
 
-                    {/* Profile Wrapper Panel styled with precise tracking alignments */}
+                    {/* Profile Wrapper*/}
                     <div className="flex items-center bg-slate-50 border-2 border-slate-200/60 pl-2 pr-4 py-1 rounded-full shadow-xs h-11">
 
-                        {/* Centered User Initials Avatar Circle - Font weight locked to black */}
+                        {/* Centered User Initials Avatar Circle */}
                         <div className="w-8 h-8 rounded-full bg-[#0E1F2F] text-white flex items-center justify-center font-black text-sm tracking-wider shadow-sm flex-shrink-0 select-none">
                             {userInitials}
                         </div>
 
-                        {/* Metadata Text Core Fix: Flex container with font-bold alignment */}
+                        {/* Metadata Text Core */}
                         <div className="flex items-center gap-2.5 ml-3 h-full">
                             <span className="text-sm font-bold text-[#0E1F2F] tracking-tight leading-none flex items-center">
                                 {user?.name || 'Himani Sharma'}
                             </span>
 
-                            {/* Refined Minimalist Corporate Role Tag - Font weight locked to black */}
+                            {/* Refined Minimalist Corporate Role Tag */}
                             <span className="bg-white text-slate-500 border border-slate-200/60 text-[10px] font-black tracking-widest uppercase px-2 py-0.5 rounded-md select-none flex items-center leading-none">
                                 {user?.role || 'Admin'}
                             </span>
@@ -94,7 +94,7 @@ const Layout = () => {
             {/* Main Workspace Frame */}
             <div className="flex flex-1 overflow-hidden relative">
 
-                {/* Mobile Backdrop Overlay */}
+                {/* Mobile Sidebar Backdrop */}
                 {isMobileMenuOpen && (
                     <div
                         className="fixed inset-0 bg-slate-900/30 backdrop-blur-xs z-40 md:hidden"
@@ -102,7 +102,7 @@ const Layout = () => {
                     />
                 )}
 
-                {/* Royal Dark Navy Sidebar */}
+                {/* Main Application Sidebar */}
                 <aside className={`
           fixed md:static inset-y-0 left-0 w-64 bg-[#0E1F2F] z-40 
           h-full overflow-y-auto flex-shrink-0 transition-transform duration-200 ease-in-out
@@ -129,7 +129,7 @@ const Layout = () => {
                     </nav>
                 </aside>
 
-                {/* Workspace Canvas Panel - Explicit height restriction to purge double scrollbars */}
+                {/* Viewport Render Outlet */}
                 <main className="flex-1 h-[calc(100vh-64px)] overflow-y-auto p-6 md:p-8 bg-[#F8FAFC]">
                     <div className="max-w-5xl mx-auto">
                         <Outlet />
