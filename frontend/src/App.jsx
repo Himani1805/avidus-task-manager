@@ -5,10 +5,10 @@ import Layout from './components/Layout';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import TaskDashboard from './pages/Dashboard';
-
-// Temporary components placeholder (Replace these with your actual pages later)
-const AdminLogs = () => <div className="p-8 text-sm text-zinc-800 font-medium">Admin Activity Logs System</div>;
-const AdminAnalytics = () => <div className="p-8 text-sm text-zinc-800 font-medium">Admin Analytics Dashboard Overview</div>;
+import AdminLogs from './pages/AdminLogs';
+import AdminAnalytics from './pages/AdminAnalytics';
+import UserManagement from './pages/UserManagement';
+import TaskMonitoring from './pages/TaskMonitoring';
 
 function App() {
   return (
@@ -47,6 +47,8 @@ function App() {
                 </ProtectedRoute>
               }
             />
+            <Route path="admin/users" element={<UserManagement />} />
+          <Route path="admin/tasks" element={<TaskMonitoring />} />
           </Route>
         </Routes>
       </BrowserRouter>
