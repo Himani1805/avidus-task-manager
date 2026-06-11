@@ -52,8 +52,8 @@ const UserManagement = () => {
   return (
     <div className="space-y-8 px-2 animate-fadeIn w-full max-w-full overflow-x-hidden">
       <div>
-        <h1 className="text-2xl font-black text-[#0E1F2F] tracking-tight">User Identity Management</h1>
-        <p className="text-sm text-slate-500 font-medium mt-1">Review authenticated operator credentials, toggle access node states, and execute purges.</p>
+        <h1 className="text-2xl font-black text-[#0E1F2F] tracking-tight">User Management</h1>
+        <p className="text-sm text-slate-500 font-medium mt-1">Manage users, change status, and remove accounts when needed.</p>
       </div>
 
       {error && (
@@ -81,9 +81,8 @@ const UserManagement = () => {
                   </div>
                   <button
                     onClick={() => handleToggleStatus(u._id, u.status || 'Active')}
-                    className={`px-2.5 py-1 rounded-lg text-[9px] font-black uppercase tracking-wider border cursor-pointer shrink-0 ${
-                      (u.status || 'Active') === 'Active' ? 'bg-emerald-600 text-white' : 'bg-red-600 text-white'
-                    }`}
+                    className={`px-2.5 py-1 rounded-lg text-[9px] font-black uppercase tracking-wider border cursor-pointer shrink-0 ${(u.status || 'Active') === 'Active' ? 'bg-emerald-600 text-white' : 'bg-red-600 text-white'
+                      }`}
                   >
                     {u.status || 'Active'}
                   </button>
@@ -92,7 +91,7 @@ const UserManagement = () => {
                   <span className="text-slate-400 font-black uppercase text-[9px]">Authorization Level:</span>
                   <span className="bg-slate-100 text-slate-600 text-[9px] font-black uppercase px-2 py-0.5 rounded-md border border-slate-200">{u.role || 'User'}</span>
                   <button onClick={() => handleDeleteUser(u._id)} className="text-[11px] font-black text-red-500 hover:text-white hover:bg-red-600 px-3 py-1 rounded-lg transition-all cursor-pointer">
-                    Purge Profile
+                    Delete Account
                   </button>
                 </div>
               </div>
@@ -105,9 +104,9 @@ const UserManagement = () => {
           <table className="w-full text-left border-collapse min-w-[750px]">
             <thead>
               <tr className="bg-[#0E1F2F] border-b border-[#0E1F2F]">
-                <th className="text-xs font-black text-white uppercase tracking-widest px-6 py-4.5">Account Operator</th>
-                <th className="text-xs font-black text-white uppercase tracking-widest px-6 py-4.5 w-44 text-center">System Role</th>
-                <th className="text-xs font-black text-white uppercase tracking-widest px-6 py-4.5 w-40 text-center">Node State</th>
+                <th className="text-xs font-black text-white uppercase tracking-widest px-6 py-4.5">Username</th>
+                <th className="text-xs font-black text-white uppercase tracking-widest px-6 py-4.5 w-44 text-center">Role</th>
+                <th className="text-xs font-black text-white uppercase tracking-widest px-6 py-4.5 w-40 text-center">Status</th>
                 <th className="text-xs font-black text-white uppercase tracking-widest px-6 py-4.5 w-44 text-center">Actions Ledger</th>
               </tr>
             </thead>
@@ -131,16 +130,15 @@ const UserManagement = () => {
                     <td className="px-6 py-5 text-center">
                       <button
                         onClick={() => handleToggleStatus(u._id, u.status || 'Active')}
-                        className={`px-3 py-1.5 rounded-xl text-[10px] font-black uppercase tracking-widest border-2 transition-all cursor-pointer ${
-                          (u.status || 'Active') === 'Active' ? 'bg-emerald-600 text-white border-emerald-600 shadow-sm' : 'bg-red-600 text-white border-red-600 shadow-sm'
-                        }`}
+                        className={`px-3 py-1.5 rounded-xl text-[10px] font-black uppercase tracking-widest border-2 transition-all cursor-pointer ${(u.status || 'Active') === 'Active' ? 'bg-emerald-600 text-white border-emerald-600 shadow-sm' : 'bg-red-600 text-white border-red-600 shadow-sm'
+                          }`}
                       >
                         {u.status || 'Active'}
                       </button>
                     </td>
                     <td className="px-6 py-5 text-center">
                       <button onClick={() => handleDeleteUser(u._id)} className="text-xs font-black text-red-500 hover:text-white bg-red-50 hover:bg-red-600 px-4 py-2 rounded-xl transition-all cursor-pointer border border-transparent hover:border-red-200">
-                        Purge Account
+                        Delete Account
                       </button>
                     </td>
                   </tr>

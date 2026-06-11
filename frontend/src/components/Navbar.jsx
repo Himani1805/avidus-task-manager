@@ -14,13 +14,13 @@ const Navbar = () => {
     <nav className="sticky top-0 z-50 border-b border-zinc-100 bg-white/80 backdrop-blur-md">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-14 items-center justify-between">
-          
+
           {/* Left Side: Brand Logo & Navigation */}
           <div className="flex items-center gap-8">
             <Link to="/" className="text-sm font-semibold tracking-tight text-zinc-900">
               TaskFlow<span className="text-zinc-400">.</span>
             </Link>
-            
+
             <div className="flex items-center gap-1">
               {user?.role === 'Admin' ? (
                 <>
@@ -50,9 +50,9 @@ const Navbar = () => {
                 {user?.role}
               </span>
             </div>
-            
+
             <div className="h-4 w-[1px] bg-zinc-200" />
-            
+
             <button
               onClick={handleLogout}
               className="text-xs font-medium text-zinc-500 hover:text-red-600 transition-colors cursor-pointer"

@@ -14,7 +14,7 @@ const AdminAnalytics = () => {
         setIsLoading(true);
         const response = await api.get('/admin/analytics');
         const data = response.data || {};
-        
+
         // Extract and map all specified metrics cleanly from the admin controller payload
         const users = data.totalUsers || 0;
         const tasks = data.totalTasks || 0;
@@ -55,11 +55,11 @@ const AdminAnalytics = () => {
 
   return (
     <div className="space-y-8 px-2 animate-fadeIn w-full max-w-full overflow-x-hidden pb-12">
-      
+
       {/* Telemetry Module Title Context */}
       <div>
-        <h1 className="text-2xl font-black text-[#0E1F2F] tracking-tight">System Telemetry</h1>
-        <p className="text-sm text-slate-500 font-medium mt-1">Real-time infrastructure statistics and user activity data aggregates.</p>
+        <h1 className="text-2xl font-black text-[#0E1F2F] tracking-tight">Analytics</h1>
+        <p className="text-sm text-slate-500 font-medium mt-1">Track users, tasks, and overall system performance.</p>
       </div>
 
       {error && (
@@ -69,8 +69,8 @@ const AdminAnalytics = () => {
       )}
 
       {/* --- 5-COLUMN HIGH-CONTRAST METRICS CARD ROW (Fulfills PDF Criteria completely) --- */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
-        
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+
         {/* Card 1: Total Identity Counter */}
         <div className="bg-white border-2 border-slate-100 rounded-3xl p-5 flex items-center justify-between transition-all duration-300 hover:border-[#C38EB4] hover:shadow-md">
           <div className="space-y-0.5">
@@ -98,7 +98,7 @@ const AdminAnalytics = () => {
         {/* Card 3: COMPLETED TASKS METRIC CONTAINER */}
         <div className="bg-white border-2 border-slate-100 rounded-3xl p-5 flex items-center justify-between transition-all duration-300 hover:border-emerald-500 hover:shadow-md">
           <div className="space-y-0.5">
-            <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Completed Items</span>
+            <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Completed Tasks</span>
             <h3 className="text-3xl font-black text-emerald-600 tracking-tight">{stats.completedTasks}</h3>
             <p className="text-[10px] text-slate-400 font-medium pt-1">Milestones secured.</p>
           </div>
@@ -110,24 +110,12 @@ const AdminAnalytics = () => {
         {/* Card 4: PENDING TASKS METRIC CONTAINER */}
         <div className="bg-white border-2 border-slate-100 rounded-3xl p-5 flex items-center justify-between transition-all duration-300 hover:border-amber-500 hover:shadow-md">
           <div className="space-y-0.5">
-            <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Pending Queue</span>
+            <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Pending Tasks</span>
             <h3 className="text-3xl font-black text-amber-600 tracking-tight">{stats.pendingTasks}</h3>
             <p className="text-[10px] text-slate-400 font-medium pt-1">Blocks in stack.</p>
           </div>
           <div className="w-10 h-10 rounded-xl bg-amber-500 flex items-center justify-center text-white shrink-0 shadow-sm">
             <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-          </div>
-        </div>
-
-        {/* Card 5: System Operations Journal Logs */}
-        <div className="bg-white border-2 border-slate-100 rounded-3xl p-5 flex items-center justify-between transition-all duration-300 hover:border-[#26425A] hover:shadow-md">
-          <div className="space-y-0.5">
-            <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Journal Logs</span>
-            <h3 className="text-3xl font-black text-[#0E1F2F] tracking-tight">{stats.logsCount}</h3>
-            <p className="text-[10px] text-slate-400 font-medium pt-1">Transactions logged.</p>
-          </div>
-          <div className="w-10 h-10 rounded-xl bg-[#26425A] flex items-center justify-center text-white shrink-0 shadow-sm">
-            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 009 11.5a13.917 13.917 0 00-3.363-9.416L5.575 2.1M12 11a13.917 13.917 0 003.363-9.416L15.425 2.1M12 11c1.744 2.772 2.753 6.054 2.753 9.571m-1.113-2.04l-.054-.09a13.916 13.916 0 00-3.363-9.416L12.575 2.1M10 10h4v2h-4v-2z" /></svg>
           </div>
         </div>
 
@@ -143,8 +131,8 @@ const AdminAnalytics = () => {
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart data={chartData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
               <defs>
-                <linearGradient id="colorOps" x1="0" y1="0" x2="0" y2="1"><stop offset="5%" stopColor="#0E1F2F" stopOpacity={0.25}/><stop offset="95%" stopColor="#0E1F2F" stopOpacity={0.0}/></linearGradient>
-                <linearGradient id="colorTasks" x1="0" y1="0" x2="0" y2="1"><stop offset="5%" stopColor="#86A8CF" stopOpacity={0.35}/><stop offset="95%" stopColor="#86A8CF" stopOpacity={0.0}/></linearGradient>
+                <linearGradient id="colorOps" x1="0" y1="0" x2="0" y2="1"><stop offset="5%" stopColor="#0E1F2F" stopOpacity={0.25} /><stop offset="95%" stopColor="#0E1F2F" stopOpacity={0.0} /></linearGradient>
+                <linearGradient id="colorTasks" x1="0" y1="0" x2="0" y2="1"><stop offset="5%" stopColor="#86A8CF" stopOpacity={0.35} /><stop offset="95%" stopColor="#86A8CF" stopOpacity={0.0} /></linearGradient>
               </defs>
               <CartesianGrid strokeDasharray="3 3" stroke="#F1F5F9" vertical={false} />
               <XAxis dataKey="name" stroke="#94A3B8" fontSize={11} fontWeight={700} tickLine={false} axisLine={false} />

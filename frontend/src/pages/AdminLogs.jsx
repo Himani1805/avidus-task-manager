@@ -21,7 +21,6 @@ const AdminLogs = () => {
     fetchLogs();
   }, []);
 
-  // Map action triggers to custom high-contrast solid palette colors
   const getActionStyles = (action) => {
     const act = action?.toUpperCase() || '';
     if (act.includes('LOGIN')) {
@@ -36,12 +35,26 @@ const AdminLogs = () => {
     return 'bg-[#C38EB4] text-white border-[#C38EB4] shadow-xs';
   };
 
+  const resolveUsername = (log) => {
+    return (
+      log.userName ||
+      log.username ||
+      log.user?.name ||
+      log.userId?.name ||
+      log.userEmail ||
+      log.email ||
+      log.user_id ||
+      'Unknown Operator'
+    );
+  };
+
   return (
-    <div className="space-y-8 px-2 animate-fadeIn w-full">
-      {/* Module Title Context Banner Block */}
+    <div className="space-y-6 px-2 animate-fadeIn w-full max-w-full box-border overflow-x-hidden">
       <div>
-        <h1 className="text-xl sm:text-2xl font-black text-[#0E1F2F] tracking-tight">Security Audit Trail</h1>
-        <p className="text-xs sm:text-sm text-slate-500 font-medium mt-1">Immutable streaming ledger recording operational vectors across cluster endpoints.</p>
+        <h1 className="text-xl sm:text-2xl font-black text-[#0E1F2F] tracking-tight">Activity Logs</h1>
+        <p className="text-sm text-slate-500 font-medium mt-1">
+          Track user actions, login activity, and system events.
+        </p>
       </div>
 
       {error && (
@@ -50,8 +63,8 @@ const AdminLogs = () => {
         </div>
       )}
 
-      {/* --- RESPONSIVE MOBILE COMPONENT LIST (Visible on small screens only) --- */}
-      <div className="block md:hidden space-y-4">
+      {/* --- MOBILE/TABLET CARD LIST --- */}
+      <div className="block lg:hidden space-y-4 w-full">
         {isLoading ? (
           [1, 2, 3].map((n) => (
             <div key={n} className="bg-white border-2 border-slate-100 rounded-2xl p-5 space-y-3 animate-pulse">
@@ -68,8 +81,8 @@ const AdminLogs = () => {
           logs.map((log) => (
             <div key={log._id || log.id} className="bg-white border-2 border-slate-100 rounded-2xl p-5 space-y-3 shadow-xs hover:border-[#86A8CF] transition-all">
               <div className="flex items-start justify-between gap-2">
-                <div className="font-bold text-[#0E1F2F] text-sm truncate" title={log.userEmail || log.userName || log.user_id}>
-                  {log.userEmail || log.userName || log.user_id || 'System Instance'}
+                <div className="font-bold text-[#0E1F2F] text-sm truncate max-w-[60%]" title={resolveUsername(log)}>
+                  {resolveUsername(log)}
                 </div>
                 <span className={`px-2.5 py-0.5 rounded-xl text-[9px] font-black tracking-widest uppercase border border-transparent shrink-0 ${getActionStyles(log.action)}`}>
                   {log.action || 'SYSTEM_OP'}
@@ -92,16 +105,17 @@ const AdminLogs = () => {
         )}
       </div>
 
-      {/* --- DESKTOP TABLE LAYOUT CONTAINER (Hidden on small screens, fluid on desktop) --- */}
-      <div className="hidden md:block bg-white border-2 border-slate-100 rounded-3xl shadow-sm overflow-hidden w-full">
+      {/* --- DESKTOP TABLE LAYOUT CONTAINER --- */}
+      <div className="hidden lg:block bg-white border-2 border-slate-100 rounded-3xl shadow-sm overflow-hidden w-full">
         <div className="w-full overflow-x-auto">
-          <table className="w-full text-left border-collapse min-w-[750px]">
+          {/* 🌟 FIXED SCROLL JUGAD: Reduced min-w to 600px and added table-auto for flexible cell sizing */}
+          <table className="w-full text-left border-collapse min-w-[600px] lg:min-w-full table-auto">
             <thead>
               <tr className="bg-[#0E1F2F] border-b border-[#0E1F2F]">
-                <th className="text-xs font-black text-white uppercase tracking-widest px-6 py-4.5">Operator Instance</th>
-                <th className="text-xs font-black text-white uppercase tracking-widest px-6 py-4.5 w-48">Action Descriptor</th>
-                <th className="text-xs font-black text-white uppercase tracking-widest px-6 py-4.5 w-40">IP Address</th>
-                <th className="text-xs font-black text-white uppercase tracking-widest px-6 py-4.5 w-56">Logged Timestamp</th>
+                <th className="text-xs font-black text-white uppercase tracking-widest px-6 py-4.5">Username</th>
+                <th className="text-xs font-black text-white uppercase tracking-widest px-6 py-4.5 w-44">Action Descriptor</th>
+                <th className="text-xs font-black text-white uppercase tracking-widest px-6 py-4.5 w-36">IP Address</th>
+                <th className="text-xs font-black text-white uppercase tracking-widest px-6 py-4.5 w-52">Logged Timestamp</th>
               </tr>
             </thead>
 
@@ -124,8 +138,8 @@ const AdminLogs = () => {
               ) : (
                 logs.map((log) => (
                   <tr key={log._id || log.id} className="hover:bg-slate-50/70 transition-colors duration-150">
-                    <td className="px-6 py-5 font-bold text-[#0E1F2F] truncate max-w-[220px]" title={log.userEmail || log.userName || log.user_id}>
-                      {log.userEmail || log.userName || log.user_id || 'System Instance'}
+                    <td className="px-6 py-5 font-bold text-[#0E1F2F] truncate max-w-[180px]" title={resolveUsername(log)}>
+                      {resolveUsername(log)}
                     </td>
                     <td className="px-6 py-5">
                       <span className={`px-3 py-1 rounded-xl text-[10px] font-black tracking-widest uppercase border border-transparent ${getActionStyles(log.action)}`}>
@@ -135,7 +149,7 @@ const AdminLogs = () => {
                     <td className="px-6 py-5 text-slate-600 font-mono tracking-tight text-xs">
                       {log.ipAddress || log.ip_address || '127.0.0.1'}
                     </td>
-                    <td className="px-6 py-5 text-slate-500 font-semibold">
+                    <td className="px-6 py-5 text-slate-500 font-semibold truncate max-w-[200px]">
                       {log.createdAt || log.timestamp ? new Date(log.createdAt || log.timestamp).toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short' }) : 'N/A'}
                     </td>
                   </tr>

@@ -37,13 +37,20 @@ const TaskMonitoring = () => {
         }
     };
 
+    const resolveOwner = (t) => {
+        if (t.createdBy && typeof t.createdBy === 'object') {
+            return t.createdBy.name || t.createdBy.email || 'System Identity';
+        }
+        return t.createdBy || 'Unknown User';
+    };
+
     const isMobileOrTablet = windowWidth < 1024;
 
     return (
         <div className="space-y-8 px-2 animate-fadeIn w-full max-w-full overflow-x-hidden">
             <div>
-                <h1 className="text-2xl font-black text-[#0E1F2F] tracking-tight">Global Task Monitoring</h1>
-                <p className="text-sm text-slate-500 font-medium mt-1">Intercept, monitor progress flags, and apply administrative overrides across distributed milestones.</p>
+                <h1 className="text-2xl font-black text-[#0E1F2F] tracking-tight">Task Monitoring</h1>
+                <p className="text-sm text-slate-500 font-medium mt-1">Monitor tasks, check progress, and manage task records.</p>
             </div>
 
             {error && (
@@ -73,9 +80,9 @@ const TaskMonitoring = () => {
                                     </span>
                                 </div>
                                 <div className="pt-2 border-t border-slate-100 flex justify-between items-center">
-                                    <span className="text-[10px] text-slate-400 font-medium">Owner: <span className="font-bold text-[#0E1F2F]">{t.userEmail || t.userName || 'System Assigned'}</span></span>
+                                    <span className="text-[10px] text-slate-400 font-medium">Owner: <span className="font-bold text-[#0E1F2F]">{resolveOwner(t)}</span></span>
                                     <button onClick={() => handleAdminDeleteTask(t._id)} className="text-xs font-black text-red-600 bg-red-50 hover:bg-red-600 hover:text-white px-3 py-1 rounded-lg transition-all cursor-pointer">
-                                        Erase Item
+                                        Delete
                                     </button>
                                 </div>
                             </div>
@@ -88,10 +95,10 @@ const TaskMonitoring = () => {
                     <table className="w-full text-left border-collapse min-w-[750px]">
                         <thead>
                             <tr className="bg-[#0E1F2F] border-b border-[#0E1F2F]">
-                                <th className="text-xs font-black text-white uppercase tracking-widest px-6 py-4.5">Objective Structure</th>
-                                <th className="text-xs font-black text-white uppercase tracking-widest px-6 py-4.5 w-56">Deployment Owner</th>
-                                <th className="text-xs font-black text-white uppercase tracking-widest px-6 py-4.5 w-40 text-center">Milestone State</th>
-                                <th className="text-xs font-black text-white uppercase tracking-widest px-6 py-4.5 w-40 text-center">Override Execution</th>
+                                <th className="text-xs font-black text-white uppercase tracking-widest px-6 py-4.5">Task Details</th>
+                                <th className="text-xs font-black text-white uppercase tracking-widest px-6 py-4.5 w-56"> Creator</th>
+                                <th className="text-xs font-black text-white uppercase tracking-widest px-6 py-4.5 w-40 text-center">Status</th>
+                                <th className="text-xs font-black text-white uppercase tracking-widest px-6 py-4.5 w-40 text-center">Actions</th>
                             </tr>
                         </thead>
                         <tbody className="divide-y-2 divide-slate-50 text-sm font-medium text-slate-700">
@@ -107,7 +114,7 @@ const TaskMonitoring = () => {
                                             <div className="text-xs text-slate-400 font-medium truncate max-w-sm">{t.description || 'No execution details package appended.'}</div>
                                         </td>
                                         <td className="px-6 py-5 font-bold text-slate-600 truncate max-w-[180px]">
-                                            {t.userEmail || t.userName || 'Root System Admin'}
+                                            {resolveOwner(t)}
                                         </td>
                                         <td className="px-6 py-5 text-center">
                                             <span className={`px-3 py-1.5 rounded-xl text-[10px] font-black tracking-widest uppercase border border-transparent shadow-xs ${t.status === 'Completed' ? 'bg-emerald-600 text-white shadow-emerald-600/10' : 'bg-[#C38EB4] text-white shadow-pink-500/10'
@@ -117,7 +124,7 @@ const TaskMonitoring = () => {
                                         </td>
                                         <td className="px-6 py-5 text-center">
                                             <button onClick={() => handleAdminDeleteTask(t._id)} className="text-xs font-black text-red-500 hover:text-white bg-red-50 hover:bg-red-600 px-4 py-2 rounded-xl transition-all cursor-pointer">
-                                                Erase Objective
+                                                Delete Task
                                             </button>
                                         </td>
                                     </tr>
