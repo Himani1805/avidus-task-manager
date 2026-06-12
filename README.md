@@ -6,7 +6,29 @@ A full-stack web application for managing tasks with special **Admin** and **Use
 
 ## Live Url - 
 * **Frontend** — [https://avidus-task-manager-tau.vercel.app]
-* **Backend** — [https://avidus-task-manager-mt6h.onrender.com]
+* **Backend** — [https://avidus-task-manager-beyo.onrender.com]
+
+
+## Test Account Credentials
+
+You can use these pre-registered accounts to log in and test both Admin and User roles immediately:
+
+### 🛠️ Admin Accounts
+
+* **Account 1 (Admin):**
+  * **Email:** `admin@avidus.com`
+  * **Password:** `securepassword123`
+* **Account 2 (Hina):**
+  * **Email:** `hina@gmail.com`
+  * **Password:** `Hina123`
+
+### 👤 User Account
+* **Account 1 (Ritu):**
+  * **Email:** `ritu@avidus.com`
+  * **Password:** `ritu123`
+
+---
+
 
 ---
 ## Features
@@ -47,26 +69,6 @@ The system automatically tracks and saves logs when:
 * **frontend/** — Client side code (React.js + Tailwind)
 
 ---
-
----
-
-## Test Account Credentials
-
-You can use these pre-registered accounts to log in and test both Admin and User roles immediately:
-
-### 🛠️ Admin Accounts
-
-* **Account 1 (Admin):**
-  * **Email:** `admin@avidus.com`
-  * **Password:** `securepassword123`
-* **Account 2 (Hina):**
-  * **Email:** `hina@gmail.com`
-  * **Password:** `Hina123`
-
-### 👤 User Account
-* **Account 1 (Ritu):**
-  * **Email:** `ritu@avidus.com`
-  * **Password:** `ritu123`
 
 ---
 
