@@ -6,7 +6,29 @@ A full-stack web application for managing tasks with special **Admin** and **Use
 
 ## Live Url - 
 * **Frontend** — [https://avidus-task-manager-tau.vercel.app]
-* **Backend** — [https://avidus-task-manager-mt6h.onrender.com]
+* **Backend** — [https://avidus-task-manager-beyo.onrender.com]
+
+
+## Test Account Credentials
+
+You can use these pre-registered accounts to log in and test both Admin and User roles immediately:
+
+### 🛠️ Admin Accounts
+
+* **Account 1 (Admin):**
+  * **Email:** `admin@avidus.com`
+  * **Password:** `securepassword123`
+* **Account 2 (Hina):**
+  * **Email:** `hina@gmail.com`
+  * **Password:** `Hina123`
+
+### 👤 User Account
+* **Account 1 (Ritu):**
+  * **Email:** `ritu@avidus.com`
+  * **Password:** `ritu123`
+
+---
+
 
 ---
 ## Features
@@ -50,102 +72,96 @@ The system automatically tracks and saves logs when:
 
 ---
 
-## Test Account Credentials
+## ⚙️ How to Setup and Run the Project
 
-You can use these pre-registered accounts to log in and test both Admin and User roles immediately:
+Follow these steps to run the project locally on your machine:
 
-### 🛠️ Admin Accounts
-
-* **Account 1 (Admin):**
-  * **Email:** `admin@avidus.com`
-  * **Password:** `securepassword123`
-* **Account 2 (Hina):**
-  * **Email:** `hina@gmail.com`
-  * **Password:** `Hina123`
-
-### 👤 User Account
-* **Account 1 (Ritu):**
-  * **Email:** `ritu@avidus.com`
-  * **Password:** `ritu123`
-
----
-
-## How to Setup and Run the Project
-
-Follow these steps to run the project on your laptop:
-
-### Step 1: Clone the Project
-Open your terminal and run this command to download the code:
+### 📥 Step 1: Clone the Project
+Open your terminal and run the following command to download the code:
 ```bash
 git clone <your-repository-url>
 cd task-management-rbac
+```
 
-
-Step 2: Setup the Backend
-Go into the backend folder:
-
-cd backend
-
-2. Install all required backend packages:
+### 💻 Step 2: Setup the Backend
+1. Navigate to the `backend` folder:
    ```bash
-npm install
-Create a new file named .env inside the backend folder and add these values:
-
-Code snippet
-PORT=3001
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_secret_key
-4. Start the backend server:
-   ```bash
-npm run dev
-Step 3: Setup the Frontend
-Open a new terminal tab or window, and go into the frontend folder:
-
-cd frontend
-
-2. Install all required frontend packages:
+   cd backend
+   ```
+2. Install the backend dependencies:
    ```bash
    npm install
-Start the React application:
+   ```
+3. Create a `.env` file in the `backend` directory and add the configuration values:
+   ```env
+   PORT=5000
+   MONGO_URI=your_mongodb_connection_string
+   JWT_SECRET=your_secret_key
+   SALT_ROUNDS=10
+   JWT_EXPIRES=30d
+   ```
+4. Start the backend development server:
+   ```bash
+   npm run dev
+   ```
 
-Bash
-npm run dev
-
-## Main API Endpoints
-
-### Authentication
-* `POST /api/auth/register` - Create a new user account
-* `POST /api/auth/login` - Log into an account
-
-### User Tasks
-* `GET /api/tasks` - Get your tasks
-* `POST /api/tasks` - Create a new task
-* `PUT /api/tasks/:id` - Edit a task or change its status
-* `DELETE /api/tasks/:id` - Delete a task
-
-### Admin Controls
-* `GET /api/admin/users` - View all users
-* `PATCH /api/admin/users/:id/status` - Change user status (Active/Inactive)
-* `DELETE /api/admin/users/:id` - Delete a user
-* `GET /api/admin/tasks` - View all tasks in the system
-* `DELETE /api/admin/tasks/:id` - Delete any task
-* `GET /api/admin/activity-logs` - View activity logs
-* `GET /api/admin/analytics` - Get database metrics for charts
+### 🎨 Step 3: Setup the Frontend
+1. Open a new terminal window/tab and navigate to the `frontend` folder:
+   ```bash
+   cd frontend
+   ```
+2. Install the frontend dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the Vite React development server:
+   ```bash
+   npm run dev
+   ```
 
 ---
 
-## How to Create More Admin Accounts Manually
+## 🛣️ Main API Endpoints
 
-By default, every new user gets the **User** role. To make any new account an **Admin**, follow these steps:
+### 🔐 Authentication
+* `POST /api/auth/register` — Register a new user account
+* `POST /api/auth/login` — Log in to an existing account
 
-1. Open your MongoDB database tool (like MongoDB Compass).
-2. Find your user document in the database collection.
-3. Change your role from `"User"` to `"Admin"` manually:
+### 📝 User Tasks
+* `GET /api/tasks` — Retrieve your tasks
+* `POST /api/tasks` — Create a new task
+* `PUT /api/tasks/:id` — Edit task details or update status (Pending/Completed)
+* `DELETE /api/tasks/:id` — Delete a specific task
+
+### 🛡️ Admin Controls
+* `GET /api/admin/users` — View all registered users
+* `PATCH /api/admin/users/:id/status` — Change user status (Active/Inactive)
+* `DELETE /api/admin/users/:id` — Delete a user account
+* `GET /api/admin/tasks` — View all tasks created by all users
+* `DELETE /api/admin/tasks/:id` — Delete any task in the system
+* `GET /api/admin/activity-logs` — View system activity logs
+* `GET /api/admin/analytics` — Get analytics metrics for the admin charts
+
+---
+
+## 👤 How to Create More Admin Accounts Manually
+
+By default, every new user is registered with the **User** role. To upgrade an account to **Admin**:
+
+1. Open your MongoDB GUI tool (e.g., MongoDB Compass or Atlas).
+2. Open the `users` collection.
+3. Locate the user document you wish to upgrade.
+4. Modify the `role` field from `"User"` to `"Admin"`:
    ```json
    {
      "role": "Admin"
    }
-Log out from the website, and then log back in to see the Admin Dashboard.
+   ```
+5. Log out from the web app and log back in to access the Admin Dashboard.
 
-✒️ Author
-Himani Sharma - Full Stack MERN Application
+---
+
+## ✒️ Author
+
+**Himani Sharma**  
+*Full Stack MERN Developer*
