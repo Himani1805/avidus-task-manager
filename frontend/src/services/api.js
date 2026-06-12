@@ -3,7 +3,7 @@ import axios from 'axios';
 // Create a centralized axios instance
 const api = axios.create({
   // baseURL: 'http://localhost:5000/api',
-  baseURL:'https://avidus-task-manager-tau.vercel.app/api',
+  baseURL:'https://avidus-task-manager-mt6h.onrender.com/api',
   headers: {
     'Content-Type': 'application/json',
   },
