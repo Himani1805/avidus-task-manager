@@ -48,6 +48,28 @@ The system automatically tracks and saves logs when:
 
 ---
 
+---
+
+## Test Account Credentials
+
+You can use these pre-registered accounts to log in and test both Admin and User roles immediately:
+
+### 🛠️ Admin Accounts
+
+* **Account 1 (Admin):**
+  * **Email:** `admin@avidus.com`
+  * **Password:** `securepassword123`
+* **Account 2 (Hina):**
+  * **Email:** `hina@gmail.com`
+  * **Password:** `Hina123`
+
+### 👤 User Account
+* **Account 1 (Ritu):**
+  * **Email:** `ritu@avidus.com`
+  * **Password:** `ritu123`
+
+---
+
 ## How to Setup and Run the Project
 
 Follow these steps to run the project on your laptop:
@@ -88,27 +110,6 @@ Start the React application:
 
 Bash
 npm run dev
-
----
-
-## Test Account Credentials
-
-You can use these pre-registered accounts to log in and test both Admin and User roles immediately:
-
-### 🛠️ Admin Accounts
-* **Account 1 (Admin):**
-  * **Email:** `admin@avidus.com`
-  * **Password:** `securepassword123`
-* **Account 2 (Hina):**
-  * **Email:** `Hina@gmail.com`
-  * **Password:** `Hina123`
-
-### 👤 User Account
-* **Account 1 (Ritu):**
-  * **Email:** `ritu@avidus.com`
-  * **Password:** `ritu123`
-
----
 
 ## Main API Endpoints
 
