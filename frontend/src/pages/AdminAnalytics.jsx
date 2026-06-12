@@ -42,79 +42,79 @@ const AdminAnalytics = () => {
 
   if (isLoading) {
     return (
-      <div className="space-y-8 px-2 anonymity-pulse">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
-          {[1, 2, 3, 4, 5].map((n) => (
-            <div key={n} className="h-32 bg-white border-2 border-slate-100 rounded-3xl animate-pulse" />
+      <div className="space-y-4 px-2 anonymity-pulse max-h-screen overflow-hidden">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {[1, 2, 3, 4].map((n) => (
+            <div key={n} className="h-24 bg-white border-2 border-slate-100 rounded-2xl animate-pulse" />
           ))}
         </div>
-        <div className="h-80 bg-white border-2 border-slate-100 rounded-3xl animate-pulse" />
+        <div className="h-60 bg-white border-2 border-slate-100 rounded-2xl animate-pulse" />
       </div>
     );
   }
 
   return (
-    <div className="space-y-8 px-2 animate-fadeIn w-full max-w-full overflow-x-hidden pb-12">
+    <div className="space-y-4 px-2 animate-fadeIn w-full max-w-full overflow-x-hidden pb-4 max-h-screen overflow-y-auto">
 
       {/* Telemetry Module Title Context */}
       <div>
-        <h1 className="text-2xl font-black text-[#0E1F2F] tracking-tight">Analytics</h1>
-        <p className="text-sm text-slate-500 font-medium mt-1">Track users, tasks, and overall system performance.</p>
+        <h1 className="text-xl font-black text-[#0E1F2F] tracking-tight">Analytics</h1>
+        <p className="text-xs text-slate-500 font-medium mt-0.5">Track users, tasks, and overall system performance.</p>
       </div>
 
       {error && (
-        <div className="rounded-2xl bg-red-50 border-2 border-red-100 p-4 text-xs font-bold text-red-600 shadow-sm">
+        <div className="rounded-2xl bg-red-50 border-2 border-red-100 p-3 text-xs font-bold text-red-600 shadow-sm">
           {error}
         </div>
       )}
 
-      {/* --- 5-COLUMN HIGH-CONTRAST METRICS CARD ROW (Fulfills PDF Criteria completely) --- */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      {/* --- 4-COLUMN HIGH-CONTRAST METRICS CARD ROW --- */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
 
         {/* Card 1: Total Identity Counter */}
-        <div className="bg-white border-2 border-slate-100 rounded-3xl p-5 flex items-center justify-between transition-all duration-300 hover:border-[#C38EB4] hover:shadow-md">
+        <div className="bg-white border-2 border-slate-100 rounded-2xl p-4 flex items-center justify-between transition-all duration-300 hover:border-[#C38EB4] hover:shadow-md">
           <div className="space-y-0.5">
             <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Total Users</span>
-            <h3 className="text-3xl font-black text-[#0E1F2F] tracking-tight">{stats.totalUsers}</h3>
-            <p className="text-[10px] text-slate-400 font-medium pt-1">Identities validated.</p>
+            <h3 className="text-2xl font-black text-[#0E1F2F] tracking-tight">{stats.totalUsers}</h3>
+            <p className="text-[10px] text-slate-400 font-medium pt-0.5">Identities validated.</p>
           </div>
-          <div className="w-10 h-10 rounded-xl bg-[#C38EB4] flex items-center justify-center text-white shrink-0 shadow-sm">
+          <div className="w-9 h-9 rounded-xl bg-[#C38EB4] flex items-center justify-center text-white shrink-0 shadow-sm">
             <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
           </div>
         </div>
 
         {/* Card 2: Aggregated Tasks Count */}
-        <div className="bg-white border-2 border-slate-100 rounded-3xl p-5 flex items-center justify-between transition-all duration-300 hover:border-[#86A8CF] hover:shadow-md">
+        <div className="bg-white border-2 border-slate-100 rounded-2xl p-4 flex items-center justify-between transition-all duration-300 hover:border-[#86A8CF] hover:shadow-md">
           <div className="space-y-0.5">
             <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Total Tasks</span>
-            <h3 className="text-3xl font-black text-[#0E1F2F] tracking-tight">{stats.totalTasks}</h3>
-            <p className="text-[10px] text-slate-400 font-medium pt-1">Objectives deployed.</p>
+            <h3 className="text-2xl font-black text-[#0E1F2F] tracking-tight">{stats.totalTasks}</h3>
+            <p className="text-[10px] text-slate-400 font-medium pt-0.5">Objectives deployed.</p>
           </div>
-          <div className="w-10 h-10 rounded-xl bg-[#86A8CF] flex items-center justify-center text-white shrink-0 shadow-sm">
+          <div className="w-9 h-9 rounded-xl bg-[#86A8CF] flex items-center justify-center text-white shrink-0 shadow-sm">
             <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 01-1.995-1.858L5 7m5 4v6m4-4v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
           </div>
         </div>
 
         {/* Card 3: COMPLETED TASKS METRIC CONTAINER */}
-        <div className="bg-white border-2 border-slate-100 rounded-3xl p-5 flex items-center justify-between transition-all duration-300 hover:border-emerald-500 hover:shadow-md">
+        <div className="bg-white border-2 border-slate-100 rounded-2xl p-4 flex items-center justify-between transition-all duration-300 hover:border-emerald-500 hover:shadow-md">
           <div className="space-y-0.5">
             <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Completed Tasks</span>
-            <h3 className="text-3xl font-black text-emerald-600 tracking-tight">{stats.completedTasks}</h3>
-            <p className="text-[10px] text-slate-400 font-medium pt-1">Milestones secured.</p>
+            <h3 className="text-2xl font-black text-emerald-600 tracking-tight">{stats.completedTasks}</h3>
+            <p className="text-[10px] text-slate-400 font-medium pt-0.5">Milestones secured.</p>
           </div>
-          <div className="w-10 h-10 rounded-xl bg-emerald-600 flex items-center justify-center text-white shrink-0 shadow-sm">
+          <div className="w-9 h-9 rounded-xl bg-emerald-600 flex items-center justify-center text-white shrink-0 shadow-sm">
             <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
           </div>
         </div>
 
         {/* Card 4: PENDING TASKS METRIC CONTAINER */}
-        <div className="bg-white border-2 border-slate-100 rounded-3xl p-5 flex items-center justify-between transition-all duration-300 hover:border-amber-500 hover:shadow-md">
+        <div className="bg-white border-2 border-slate-100 rounded-2xl p-4 flex items-center justify-between transition-all duration-300 hover:border-amber-500 hover:shadow-md">
           <div className="space-y-0.5">
             <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Pending Tasks</span>
-            <h3 className="text-3xl font-black text-amber-600 tracking-tight">{stats.pendingTasks}</h3>
-            <p className="text-[10px] text-slate-400 font-medium pt-1">Blocks in stack.</p>
+            <h3 className="text-2xl font-black text-amber-600 tracking-tight">{stats.pendingTasks}</h3>
+            <p className="text-[10px] text-slate-400 font-medium pt-0.5">Blocks in stack.</p>
           </div>
-          <div className="w-10 h-10 rounded-xl bg-amber-500 flex items-center justify-center text-white shrink-0 shadow-sm">
+          <div className="w-9 h-9 rounded-xl bg-amber-500 flex items-center justify-center text-white shrink-0 shadow-sm">
             <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
           </div>
         </div>
@@ -122,14 +122,14 @@ const AdminAnalytics = () => {
       </div>
 
       {/* --- VISUAL GRAPH CHART CANVAS SECTION --- */}
-      <div className="bg-white border-2 border-slate-100 rounded-3xl p-6 shadow-xs space-y-4">
+      <div className="bg-white border-2 border-slate-100 rounded-2xl p-4 shadow-xs space-y-2">
         <div>
-          <h3 className="text-sm font-black text-[#0E1F2F] uppercase tracking-wider">System Matrix Stream Overview</h3>
-          <p className="text-xs text-slate-400 font-medium mt-0.5">Visual representation of live data feeds tracking real-time objective growth spikes.</p>
+          <h3 className="text-xs font-black text-[#0E1F2F] uppercase tracking-wider">System Matrix Stream Overview</h3>
+          <p className="text-[11px] text-slate-400 font-medium mt-0.5">Visual representation of live data feeds tracking real-time objective growth spikes.</p>
         </div>
-        <div className="w-full h-72 pt-4">
+        <div className="w-full h-56 pt-2">
           <ResponsiveContainer width="100%" height="100%">
-            <AreaChart data={chartData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+            <AreaChart data={chartData} margin={{ top: 5, right: 10, left: -25, bottom: 0 }}>
               <defs>
                 <linearGradient id="colorOps" x1="0" y1="0" x2="0" y2="1"><stop offset="5%" stopColor="#0E1F2F" stopOpacity={0.25} /><stop offset="95%" stopColor="#0E1F2F" stopOpacity={0.0} /></linearGradient>
                 <linearGradient id="colorTasks" x1="0" y1="0" x2="0" y2="1"><stop offset="5%" stopColor="#86A8CF" stopOpacity={0.35} /><stop offset="95%" stopColor="#86A8CF" stopOpacity={0.0} /></linearGradient>

@@ -33,55 +33,55 @@ const Register = () => {
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-slate-50 px-4 py-12 sm:px-6 lg:px-8">
-      <div className="w-full max-w-md space-y-6 rounded-xl border border-slate-100 bg-white p-8 shadow-sm">
+      <div className="w-full max-w-md space-y-6 rounded-3xl border-2 border-slate-100 bg-white p-8 shadow-sm">
         
         {/* Header Branding */}
-        <div className="text-center">
-          <h2 className="text-2xl font-semibold tracking-tight text-slate-900">Create your account</h2>
-          <p className="mt-1.5 text-xs text-slate-500">Get started with clean, automated task workflows</p>
+        <div className="text-center space-y-1">
+          <h2 className="text-xl font-bold tracking-tight text-[#0E1F2F]">Create your account</h2>
+          <p className="text-xs text-slate-400 font-medium">Get started with clean, automated task workflows</p>
         </div>
 
         {/* Clean Error Alert */}
         {error && (
-          <div className="rounded-lg bg-red-50/70 border border-red-100 p-3 text-xs font-medium text-red-600">
+          <div className="rounded-2xl bg-red-50 border-2 border-red-100 p-4 text-xs font-bold text-red-600 shadow-sm">
             {error}
           </div>
         )}
 
         {/* Form Fields */}
-        <form className="space-y-4" onSubmit={handleSubmit}>
+        <form className="space-y-5" onSubmit={handleSubmit}>
           <div>
-            <label className="block text-xs font-medium text-slate-700 mb-1.5">Full Name</label>
+            <label className="block text-[10px] font-black text-[#26425A] uppercase tracking-wider mb-2">Full Name</label>
             <input
               type="text"
               required
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm text-slate-900 placeholder-slate-400 shadow-sm transition-all outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/10"
+              className="w-full rounded-xl border-2 border-slate-200 px-4 py-3 text-sm text-slate-900 placeholder-slate-400 font-medium transition-all outline-none focus:border-[#26425A] focus:ring-4 focus:ring-slate-500/5"
               placeholder="Rahul Kumar"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-medium text-slate-700 mb-1.5">Email address</label>
+            <label className="block text-[10px] font-black text-[#26425A] uppercase tracking-wider mb-2">Email address</label>
             <input
               type="email"
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm text-slate-900 placeholder-slate-400 shadow-sm transition-all outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/10"
+              className="w-full rounded-xl border-2 border-slate-200 px-4 py-3 text-sm text-slate-900 placeholder-slate-400 font-medium transition-all outline-none focus:border-[#26425A] focus:ring-4 focus:ring-slate-500/5"
               placeholder="name@company.com"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-medium text-slate-700 mb-1.5">Password</label>
+            <label className="block text-[10px] font-black text-[#26425A] uppercase tracking-wider mb-2">Password</label>
             <input
               type="password"
               required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm text-slate-900 placeholder-slate-400 shadow-sm transition-all outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/10"
+              className="w-full rounded-xl border-2 border-slate-200 px-4 py-3 text-sm text-slate-900 placeholder-slate-400 font-medium transition-all outline-none focus:border-[#26425A] focus:ring-4 focus:ring-slate-500/5"
               placeholder="Minimum 6 characters"
             />
           </div>
@@ -89,17 +89,17 @@ const Register = () => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full rounded-lg bg-slate-900 py-2 text-sm font-medium text-white shadow-sm transition-colors hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-900/20 disabled:bg-slate-400 disabled:cursor-not-allowed cursor-pointer"
+            className="w-full rounded-2xl bg-[#0E1F2F] py-3.5 text-sm font-bold text-white shadow-md transition-all duration-300 hover:bg-[#26425A] focus:outline-none focus:ring-4 focus:ring-slate-500/10 disabled:bg-slate-300 disabled:cursor-not-allowed cursor-pointer tracking-wide"
           >
-            {isSubmitting ? 'Creating account...' : 'Get started'}
+            {isSubmitting ? 'Syncing...' : 'Get started'}
           </button>
         </form>
 
         {/* Footer Link */}
-        <div className="text-center pt-2">
-          <p className="text-xs text-slate-500">
+        <div className="text-center pt-2 border-t border-slate-100">
+          <p className="text-xs text-slate-400 font-medium">
             Already have an account?{' '}
-            <Link to="/login" className="font-medium text-indigo-600 hover:text-indigo-500 transition-colors">
+            <Link to="/login" className="font-bold text-[#C38EB4] hover:text-[#b57ca5] transition-colors">
               Sign in
             </Link>
           </p>
