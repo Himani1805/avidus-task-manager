@@ -6,15 +6,15 @@ A full-stack web application for managing tasks with special **Admin** and **Use
 
 ## Live Url - 
 
-## 🚀 Features
+## Features
 
-### 👤 For Users
+### For Users
 * Create your own tasks.
 * View only your own tasks.
 * Update task details or mark them as Pending/Completed.
 * Delete your own tasks.
 
-### 🛡️ For Admins
+### For Admins
 * View all registered users in the system.
 * Change user status between Active and Inactive.
 * Delete any user account.
@@ -23,7 +23,7 @@ A full-stack web application for managing tasks with special **Admin** and **Use
 * View the system activity history (Logs).
 * View live charts and statistics dashboard.
 
-### 📊 Activity Tracking
+### Activity Tracking
 The system automatically tracks and saves logs when:
 * A user logs in.
 * A task is created, updated, or deleted.
@@ -31,21 +31,21 @@ The system automatically tracks and saves logs when:
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 * **Frontend:** React, React Router DOM, Axios, Tailwind CSS v4, Recharts
 * **Backend:** Node.js, Express.js, MongoDB, Mongoose, JWT, Bcryptjs
 
 ---
 
-## 📁 Folder Structure
+## Folder Structure
 
 * **backend/** — Server side code (Node.js + Express)
 * **frontend/** — Client side code (React.js + Tailwind)
 
 ---
 
-## ⚙️ How to Setup and Run the Project
+## How to Setup and Run the Project
 
 Follow these steps to run the project on your laptop:
 
@@ -88,7 +88,7 @@ npm run dev
 
 ---
 
-## 🔐 Test Account Credentials
+## Test Account Credentials
 
 You can use these pre-registered accounts to log in and test both Admin and User roles immediately:
 
@@ -107,7 +107,7 @@ You can use these pre-registered accounts to log in and test both Admin and User
 
 ---
 
-## 🔑 Main API Endpoints
+## Main API Endpoints
 
 ### Authentication
 * `POST /api/auth/register` - Create a new user account
@@ -130,7 +130,7 @@ You can use these pre-registered accounts to log in and test both Admin and User
 
 ---
 
-## 🤝 How to Create More Admin Accounts Manually
+## How to Create More Admin Accounts Manually
 
 By default, every new user gets the **User** role. To make any new account an **Admin**, follow these steps:
 
