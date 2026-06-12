@@ -15,13 +15,38 @@ connectDB();
 
 // Global Middlewares
 // app.use(cors());
+// app.use(cors({
+//   // origin: ['http://localhost:5173'],
+//   // origin: ['https://avidus-task-manager-tau.vercel.app', 'http://localhost:5173'],
+//     origin: 'https://avidus-task-manager-tau.vercel.app',
+
+//   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+//   credentials: true,
+//   allowedHeaders: ['Content-Type', 'Authorization']
+// }));
+
+// Allowed sources (Both local laptop testing and live Vercel deployment)
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://avidus-task-manager-tau.vercel.app'
+];
+
 app.use(cors({
-  // origin: ['http://localhost:5173'],
-  origin: ['https://avidus-task-manager-tau.vercel.app', 'http://localhost:5173'],
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+  origin: function (origin, callback) {
+    // allow requests with no origin (like mobile apps, postman or curl)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) === -1) {
+      const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  },
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
   credentials: true,
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
+
+app.options('*', cors());
 
 app.use(express.json());
 
