@@ -5,6 +5,8 @@ A full-stack web application for managing tasks with special **Admin** and **Use
 ---
 
 ## Live Url - 
+Frontend - https://avidus-task-manager-tau.vercel.app/
+Backend - https://avidus-task-manager-mt6h.onrender.com
 
 ## Features
 
